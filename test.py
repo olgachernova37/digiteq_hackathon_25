@@ -13,16 +13,16 @@ def find_emoji(image_path, emoji_path, success=0.8):
     if image is None or emoji is None:
         print("Error: Could not load images")
         return None
-    image_h, image_w = image_path.shape[:2]
-    emoji_h, emoji_w = image_path.shape[:2]
+    image_h, image_w = image.shape[:2]
+    emoji_h, emoji_w = image.shape[:2]
     
-    for y in range of (image.shape)
 
     res = cv2.matchTemplate(image, emoji, cv2.TM_CCOEFF_NORMED) # matching
     
     # Find locations where correlation exceeds threshold
     loc = np.where(res >= success)
-    
+    confidence = res[loc]
+    print(confidence)
     if len(loc[0]) > 0:
         # Get all matches (there might be multiple)
         matches = list(zip(*loc[::-1]))  # Swap x,y coordinates
